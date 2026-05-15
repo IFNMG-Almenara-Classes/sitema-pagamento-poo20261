@@ -30,14 +30,10 @@ public class DBConnection {
             )
         """;
         try (
-                Connection conn =
-                        DBConnection.createConnection();
-                PreparedStatement stmt =
-                        conn.prepareStatement(sql)
+                Connection conn = DBConnection.createConnection();
+                PreparedStatement stmt = conn.prepareStatement(sql)
         ) {
-
             stmt.execute();
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
