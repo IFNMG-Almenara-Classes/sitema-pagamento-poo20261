@@ -22,12 +22,13 @@ public class DBConnection {
     private static void initialize() {
 
         String sql = """
-            CREATE TABLE IF NOT EXISTS clients (
-                id INTEGER(255) PRIMARY KEY AUTO_INCREMENT,
+            CREATE TABLE IF NOT EXISTS clientes (
+                id INTEGER PRIMARY KEY AUTO_INCREMENT,
                 nome VARCHAR(250),
                 cpf VARCHAR(14),
                 status VARCHAR(50)
-            )
+            );
+        
         """;
         try (
                 Connection conn = DBConnection.createConnection();
