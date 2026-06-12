@@ -1,7 +1,6 @@
 package edu.ifnmg.poo.sistemapagamento.controllers;
 
 import edu.ifnmg.poo.sistemapagamento.models.Cliente;
-import edu.ifnmg.poo.sistemapagamento.repository.ClienteDAO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
