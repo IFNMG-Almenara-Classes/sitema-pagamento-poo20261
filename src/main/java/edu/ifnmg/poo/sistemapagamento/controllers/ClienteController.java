@@ -1,5 +1,6 @@
 package edu.ifnmg.poo.sistemapagamento.controllers;
 
+import edu.ifnmg.poo.sistemapagamento.dtos.ListarClienteResponse;
 import edu.ifnmg.poo.sistemapagamento.dtos.NovoClienteRequest;
 import edu.ifnmg.poo.sistemapagamento.models.Cliente;
 import edu.ifnmg.poo.sistemapagamento.repository.ClienteRepository;
@@ -47,6 +48,14 @@ public class ClienteController {
         List<Cliente> clientes = clienteRepository.findAll();
         model.addAttribute("clientes", clientes);
         return "clientes/listar";
+    }
+
+    @GetMapping("/{id}")
+    public String detalhes(@PathVariable Long id, Model model){
+        Cliente cliente = clienteRepository.findById(id).orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+        ListarClienteResponse response = ListarClienteResponse.fromEntity(cliente);
+        model.addAttribute("cliente", response);
+        return "clientes/detalhes";
     }
 
     @GetMapping("/{id}/excluir")

@@ -1,21 +1,27 @@
 package edu.ifnmg.poo.sistemapagamento.dtos;
 
 import edu.ifnmg.poo.sistemapagamento.models.Cliente;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 
-public class NovoClienteRequest {
-    @NotBlank(message = "O nome é obrigatório")
+public class ListarClienteResponse {
+    private long id;
     private String nome;
-    @NotBlank(message = "O CPF é obrigatório")
     private String cpf;
 
-    public NovoClienteRequest() {
+    public ListarClienteResponse() {
     }
 
-    public NovoClienteRequest(String nome, String cpf) {
+    public ListarClienteResponse(long id, String nome, String cpf) {
+        this.id = id;
         this.nome = nome;
         this.cpf = cpf;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -34,9 +40,7 @@ public class NovoClienteRequest {
         this.cpf = cpf;
     }
 
-    public static Cliente fromEntity(NovoClienteRequest request){
-        return new Cliente(request.getNome(), request.getCpf());
+    public static ListarClienteResponse fromEntity(Cliente cliente){
+        return new ListarClienteResponse(cliente.getId(), cliente.getNome(), cliente.getCpf());
     }
-
-
 }
